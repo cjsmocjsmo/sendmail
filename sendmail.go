@@ -34,6 +34,10 @@ func main() {
     comment := flag.String("comment", "", "The customers comment")
     intake := flag.String("intake", "", "The intake date")
     reqdate := flag.String("reqdate", "", "The requested date")
+    
+
+    flag.Parse()
+
     log.Println("etype: ", *etype)
     log.Println("msgid: ", *msgid)
     log.Println("name: ", *name)
@@ -44,8 +48,6 @@ func main() {
     log.Println("comment: ", *comment)
     log.Println("intake: ", *intake)
     log.Println("reqdate: ", *reqdate)
-
-    flag.Parse()
 
     if *etype == "com" {
         subJECT := "atsbot: " + *name + " has left a new comment"
