@@ -13,9 +13,14 @@ import (
 )
 
 func main() {
-    // read the sendmail.env file
-    err := godotenv.Load("/usr/share/sendmail/sendmail/sendmail.env")
+    file, err := os.OpenFile("/usr/share/sendmail/sendmail/sendmail.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
     if err != nil {
+        log.Fatal(err)
+    }
+    defer file.Close()
+    // read the sendmail.env file
+    err2 := godotenv.Load("/usr/share/sendmail/sendmail/sendmail.env")
+    if err2 != nil {
         log.Fatal("Error loading .env file")
     }
     // Define command-line flags
@@ -29,6 +34,16 @@ func main() {
     comment := flag.String("comment", "", "The customers comment")
     intake := flag.String("intake", "", "The intake date")
     reqdate := flag.String("reqdate", "", "The requested date")
+    log.Println("etype: ", *etype)
+    log.Println("msgid: ", *msgid)
+    log.Println("name: ", *name)
+    log.Println("address: ", *address)
+    log.Println("city: ", *city)
+    log.Println("phone: ", *phone)
+    log.Println("email: ", *email)
+    log.Println("comment: ", *comment)
+    log.Println("intake: ", *intake)
+    log.Println("reqdate: ", *reqdate)
 
     flag.Parse()
 
@@ -58,8 +73,11 @@ func main() {
             log.Println(err)
         } else {
             fmt.Println(response.StatusCode)
+            log.Println(response.StatusCode)
             fmt.Println(response.Body)
+            log.Println(response.Body)
             fmt.Println(response.Headers)
+            log.Println(response.Headers)
         }
     } else {
         subJECT := "atsbot: " + *name + " has left a new comment"
@@ -88,8 +106,11 @@ func main() {
             log.Println(err)
         } else {
             fmt.Println(response.StatusCode)
+            log.Println(response.StatusCode)
             fmt.Println(response.Body)
+            log.Println(response.Body)
             fmt.Println(response.Headers)
+            log.Println(response.Headers)
         }
     }
 
