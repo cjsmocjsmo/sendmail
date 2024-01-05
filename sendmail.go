@@ -40,9 +40,11 @@ func main() {
         h5 := "<p>Email: " + *email + "</p>"
         h6 := "<p>Comment: " + *comment + "</p>"
         h9 := "</div>"
-        h10 := "<a href='http://192.168.0.91:8181/accept/" + *msgid + "'><button>Accept</button></a>"
-        h11 := "<a href='http://192.168.0.94:8181/reject/" + *msgid +"'><button>Reject</button></a>"
-        html_str := h0 + h1 + h5 + h6 + h9 + h10 + h11
+        h10 := "<a href='http://192.168.0.91:8181/accept/" + *msgid
+        h11 := "'><button style='background-color:green;color:white;border-radius:8px;margin:8px;'>Accept</button></a>"
+        h12 := "<a href='http://192.168.0.94:8181/reject/" + *msgid
+        h13 := "'><button style='background-color:red;color:white;border-radius:8px;margin:8px;'>Reject</button></a>"
+        html_str := h0 + h1 + h5 + h6 + h9 + h10 + h11 + h12 + h13
 
         from := mail.NewEmail("atsbot", "porthose.cjsmo.cjsmo@gmail.com")
         subject := subJECT
@@ -60,7 +62,7 @@ func main() {
             fmt.Println(response.Headers)
         }
     } else {
-        subJECT := *name + " has requested an estimate"
+        subJECT := "atsbot: " + *name + " has left a new comment"
         h0 := "<div>"
         h1 := "<p>Name: " + *name + "</p>"
         h2 := "<p>Address: " + *address + "</p>"
@@ -71,8 +73,9 @@ func main() {
         h7 := "<p>Intake: " + *intake + "</p>"
         h8 := "<p>ReqDate: " + *reqdate + "</p>"
         h9 := "</div>"
-        h10 := "<a href='http://192.168.0.91:8181/accept/" + *msgid + "'><button>Completed</button></a>"
-        html_str := h0 + h1 + h2 + h3 + h4 + h5 + h6 + h7 + h8 + h9 + h10
+        h10 := "<a href='http://192.168.0.91:8181/accept/" + *msgid
+        h11 := "'><button style='background-color:blue;border-radius:8px;color:white;'>Completed</button></a>"
+        html_str := h0 + h1 + h2 + h3 + h4 + h5 + h6 + h7 + h8 + h9 + h10 + h11
         from := mail.NewEmail("atsbot", "porthose.cjsmo.cjsmo@gmail.com")
         subject := subJECT
         to := mail.NewEmail("Charlie", "porthose.cjsmo.cjsmo@gmail.com")
