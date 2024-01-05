@@ -14,7 +14,7 @@ import (
 
 func main() {
     // read the sendmail.env file
-    err := godotenv.Load("sendmail.env")
+    err := godotenv.Load("/usr/share/sendmail/sendmail/sendmail.env")
     if err != nil {
         log.Fatal("Error loading .env file")
     }
