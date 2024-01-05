@@ -38,16 +38,17 @@ func main() {
 
     flag.Parse()
 
-    log.Println("etype: ", *etype)
-    log.Println("msgid: ", *msgid)
-    log.Println("name: ", *name)
-    log.Println("address: ", *address)
-    log.Println("city: ", *city)
-    log.Println("phone: ", *phone)
-    log.Println("email: ", *email)
-    log.Println("comment: ", *comment)
-    log.Println("intake: ", *intake)
-    log.Println("reqdate: ", *reqdate)
+    log.Printf("etype: %s\n", *etype)
+    log.Printf("msgid: %s\n", *msgid)
+    log.Printf("name: %s\n", *name)
+    log.Printf("address: %s\n", *address)
+    log.Printf("city: %s\n", *city)
+    log.Printf("phone: %s\n", *phone)
+    log.Printf("email: %s\n", *email)
+    log.Printf("comment: %s\n", *comment)
+    log.Printf("intake: %s\n", *intake)
+    log.Printf("reqdate: %s\n", *reqdate)
+
 
     if *etype == "com" {
         subJECT := "atsbot: " + *name + " has left a new comment"
