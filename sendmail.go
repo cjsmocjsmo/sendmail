@@ -13,11 +13,12 @@ import (
 )
 
 func main() {
-    file, err := os.OpenFile("/usr/share/sendmail/sendmail/sendmail.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+    file, err := os.OpenFile("/usr/share/sendmail/sendmail/sendmail.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0755)
     if err != nil {
         log.Fatal(err)
     }
     defer file.Close()
+    log.Println("Logging started")
     // read the sendmail.env file
     err2 := godotenv.Load("/usr/share/sendmail/sendmail/sendmail.env")
     if err2 != nil {
