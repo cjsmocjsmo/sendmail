@@ -75,7 +75,7 @@ func main() {
         client := sendgrid.NewSendClient(os.Getenv("SENDGRID_API_KEY"))
         response, err := client.Send(message)
         if err != nil {
-            log.Println(err)
+            log.Fatal(err)
         } else {
             fmt.Println(response.StatusCode)
             log.Println(response.StatusCode)
@@ -108,7 +108,7 @@ func main() {
         client := sendgrid.NewSendClient(os.Getenv("SENDGRID_API_KEY"))
         response, err := client.Send(message)
         if err != nil {
-            log.Println(err)
+            log.Fatal(err)
         } else {
             fmt.Println(response.StatusCode)
             log.Println(response.StatusCode)
