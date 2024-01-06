@@ -18,6 +18,7 @@ func main() {
         log.Fatal(err)
     }
     defer file.Close()
+    log.SetOutput(file)
     log.Println("Logging started")
     // read the sendmail.env file
     err2 := godotenv.Load("/usr/share/sendmail/sendmail/sendmail.env")
